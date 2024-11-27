@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://github.com/odinong/Zeon/releases"><img src="https://img.shields.io/github/v/release/odinong/Zeon?label=version&style=for-the-badge"></a>
   <a href="https://github.com/odinong/Zeon/releases/latest"><img src="https://img.shields.io/github/downloads/odinong/Zeon/latest/Zeon.dll?style=for-the-badge"></a>
-  <a href="https://discord.gg/9ku2XQq7Wr"><img src="https://img.shields.io/badge/discord-11497%20online-blueviolet?style=for-the-badge"></a>
+  <a href="https://discord.gg/9ku2XQq7Wr"><img src="https://img.shields.io/badge/discord-94%20online-blueviolet?style=for-the-badge"></a>
 </p>
 
 ---
