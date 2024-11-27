@@ -28,7 +28,7 @@ I ask that you **contact me first** if you'd like to use or modify any part of Z
 
 # How to Install
 
-1. Download the latest version from [this link](https://github.com/your_username/Zeon/releases/latest).
+1. Download the latest version from [this link](https://github.com/odinong/Zeon/releases/latest).
 2. Extract the `Zeon.dll` file to your **Gorilla Tag plugins folder**.
 3. Launch Gorilla Tag, and Zeon will be ready to use!
 
