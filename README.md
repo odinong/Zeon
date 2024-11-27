@@ -22,7 +22,7 @@ I created Zeon to be an **open-source** mod menu so anyone can access and modify
 
 ## Can I Use Zeon’s Code?
 
-I ask that you **contact me first** if you'd like to use or modify any part of Zeon’s code. While I’m open to collaboration and sharing knowledge, I prefer not to have my work taken without permission. Feel free to reach out through the [Discord server](https://discord.gg/your_discord_invite), or message me via my GitHub if you're interested in working with the code.
+I ask that you **contact me first** if you'd like to use or modify any part of Zeon’s code. While I’m open to collaboration and sharing knowledge, I prefer not to have my work taken without permission. Feel free to reach out through the [Discord server](https://discord.gg/9ku2XQq7Wr), or message me via my GitHub if you're interested in working with the code.
 
 ---
 
