@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|c:\\users\\endisastro\\desktop\\vs\\fartui\\zeon\\ui\\zeonui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|solutionrelative:zeon\\ui\\zeonui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|c:\\users\\endisastro\\desktop\\vs\\fartui\\zeon\\menu\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|solutionrelative:zeon\\menu\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|c:\\users\\endisastro\\desktop\\vs\\fartui\\zeon\\mods\\opmods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|solutionrelative:zeon\\mods\\opmods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|c:\\users\\endisastro\\desktop\\vs\\fartui\\zeon\\plugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99684F81-F39C-4372-B094-89AADA57878E}|Zeon\\Zeon.csproj|solutionrelative:zeon\\plugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "zeonui.cs",
+              "DocumentMoniker": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\UI\\zeonui.cs",
+              "RelativeDocumentMoniker": "Zeon\\UI\\zeonui.cs",
+              "ToolTip": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\UI\\zeonui.cs",
+              "RelativeToolTip": "Zeon\\UI\\zeonui.cs",
+              "ViewState": "AQIAABgCAAAAAAAAAADwvywCAABZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T21:19:27.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Plugin.cs",
+              "DocumentMoniker": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\Plugin.cs",
+              "RelativeDocumentMoniker": "Zeon\\Plugin.cs",
+              "ToolTip": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\Plugin.cs",
+              "RelativeToolTip": "Zeon\\Plugin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T21:19:24.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OPMods.cs",
+              "DocumentMoniker": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\Mods\\OPMods.cs",
+              "RelativeDocumentMoniker": "Zeon\\Mods\\OPMods.cs",
+              "ToolTip": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\Mods\\OPMods.cs",
+              "RelativeToolTip": "Zeon\\Mods\\OPMods.cs",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAqwJIAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T21:18:59.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Buttons.cs",
+              "DocumentMoniker": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\Menu\\Buttons.cs",
+              "RelativeDocumentMoniker": "Zeon\\Menu\\Buttons.cs",
+              "ToolTip": "C:\\Users\\EndisAstro\\Desktop\\VS\\FartUI\\Zeon\\Menu\\Buttons.cs",
+              "RelativeToolTip": "Zeon\\Menu\\Buttons.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAQwFYAAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T21:18:48.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
