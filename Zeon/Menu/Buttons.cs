@@ -86,7 +86,6 @@ namespace Zeon.Menu
                 new ButtonInfo { buttonText = "Lag All [BLOCKS/RT/E]", method =() => OPMods.TestCrash()},
                 new ButtonInfo { buttonText = "AntiLag - USE", method =() => OPMods.AntiCrashBlock()},
                 new ButtonInfo { buttonText = "Destroy All Blocks [RT/E]", method =() => OPMods.DestroyBlocks()},
-                new ButtonInfo { buttonText = "Lock Room [LEAVE ON]", method =() => OPMods.TestLagAll()},
             },
 
             new ButtonInfo[] { // gun mods [9]

@@ -7,6 +7,8 @@ using Zeon.Menu;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using System.Text;
+using System.Linq;
+using System.Collections;
 
 /* 
 Zeon
@@ -54,20 +56,46 @@ namespace Zeon.Patches
                 eventInfo.AppendLine("[RaiseEvent] Details:");
                 eventInfo.AppendLine($"Code: {__0.Code}");
                 eventInfo.AppendLine($"Sender: {senderName} ({__0.Sender})");
-                eventInfo.AppendLine($"Custom Data: {__0.CustomData ?? "None"}");
+                eventInfo.AppendLine($"SenderActor: {senderName} ({__0.Sender})");
+                eventInfo.AppendLine($"Custom Data: {FormatValue(__0.CustomData)}");
                 eventInfo.AppendLine($"Parameters Count: {__0.Parameters?.Count ?? 0}");
 
                 if (__0.Parameters != null)
                 {
                     foreach (var param in __0.Parameters)
                     {
-                        eventInfo.AppendLine($"Parameter Key: {param.Key}, Value: {param.Value}");
+                        eventInfo.AppendLine($"Parameter Key: {param.Key}, Value: {FormatValue(param.Value)}");
                     }
                 }
                 Debug.Log(eventInfo.ToString());
             }
         }
 
+        static string FormatValue(object value)
+        {
+            if (value == null)
+                return "None";
+
+            var array = value as Array;
+            if (array != null)
+            {
+                return $"Array[{array.Length}]: [{string.Join(", ", array.Cast<object>().Select(FormatValue))}]";
+            }
+
+            var dictionary = value as IDictionary;
+            if (dictionary != null)
+            {
+                return "Dictionary: {" + string.Join(", ", dictionary.Keys.Cast<object>().Select(key => $"{FormatValue(key)}: {FormatValue(dictionary[key])}")) + "}";
+            }
+
+            var enumerable = value as IEnumerable;
+            if (enumerable != null && !(value is string))
+            {
+                return "List: [" + string.Join(", ", enumerable.Cast<object>().Select(FormatValue)) + "]";
+            }
+
+            return value.ToString();
+        }
     }
     [HarmonyPatch(typeof(GorillaNot), "LogErrorCount")]
     public class NoLogErrorCount : MonoBehaviour

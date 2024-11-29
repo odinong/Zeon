@@ -43,7 +43,9 @@ Zeon
 Created by athena (@trix9x)
 Zeon falls under the GPL-3.0 license. Do not take credit for the work as it remains copyrighted under the terms of this license.
 
-Any comments here are completely for me, do not take my code without permission
+Any comments here are completely for me
+feel free to read them
+do not take my code without permission
 */
 namespace Zeon
 {
@@ -197,9 +199,18 @@ namespace Zeon
                 NormalMods.BoneESPOff();
                 shouldDestroyBones = false;
             }
+            if (DestroyAllBlocksE)
+            {
+                OPMods.DestroyBlocks();
+            }
+            if (gunTest)
+            {
+                OPMods.GunTest();
+            }
         }
         public static bool shouldDestroyBones = false;
         public static bool getGuardian = false;
+        public static bool gunTest = false;
         private float cooldownTime = 2.0f;
         private float nextToggleTime = 0f;
         private float minimizedHeight = 40f;
@@ -303,7 +314,7 @@ namespace Zeon
 
             labelStyle.alignment = TextAnchor.MiddleLeft;
 
-            GUI.Label(new Rect(labelX, v1TextY, labelWidth, labelHeight), $"V1.0  | FPS: {roundedFPS}  | {hours:D2}h:{minutes:D2}m:{seconds:D2}s", labelStyle);
+            GUI.Label(new Rect(labelX, v1TextY, labelWidth, labelHeight), $"V1.1.1  | FPS: {roundedFPS}  | {hours:D2}h:{minutes:D2}m:{seconds:D2}s", labelStyle);
 
             if (heightProgress >= 0.99f)
             {
@@ -408,6 +419,7 @@ namespace Zeon
             popup.SetActive(false);
             Patches.TOSPatch.enabled = true;
         }
+        public static bool neganega = false;
         private void DisplayTab1Content()
         {
             inputtedText = GUILayout.TextArea(inputtedText, textAreaStyle);
@@ -482,9 +494,13 @@ namespace Zeon
             {
                 antimod = !antimod;
             }
-            if (GUILayout.Button("Spaz Hats In TryOn Room [SS/E]" + spazhats, buttonStyle))
+            if (GUILayout.Button("Spaz Hats In TryOn Room [SS/E]: " + spazhats, buttonStyle))
             {
                 spazhats = !spazhats;
+            }
+            if (GUILayout.Button("Test Guns: " + gunTest, buttonStyle))
+            {
+                gunTest = !gunTest;
             }
             GUILayout.EndScrollView();
         }

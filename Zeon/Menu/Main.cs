@@ -209,7 +209,7 @@ namespace Zeon.Menu
         }
             }.AddComponent<Text>();
             text.font = currentFont;
-            text.text = "Zeon V2.0";
+            text.text = "Zeon V1.1.1";
             text.fontSize = 1;
             text.color = textColors[0];
             text.supportRichText = true;

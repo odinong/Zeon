@@ -54,7 +54,6 @@ namespace Zeon.Notifications
 
             if (showStartupMessage)
             {
-                PlayStartupSound();
                 SendNotification(startupMessage);
                 showStartupMessage = false;
             }
@@ -88,20 +87,21 @@ namespace Zeon.Notifications
             notificationDataList.RemoveAll(n => (Time.time - n.spawnTime) > NotificationLifetime);
         }
 
-        private void DisplayNotification(NotificationData notificationData, int index) // renderer for the on screen notifs (only change if you know what your doing)
+        private void DisplayNotification(NotificationData notificationData, int index)
         {
             float boxWidth = 300;
             float boxHeight = 70;
+            float barWidth = 2;
 
             notificationData.position.y = 10 + (index * (boxHeight + 10));
 
-            Rect backgroundRect = new Rect(notificationData.position.x + 10, notificationData.position.y, boxWidth - 10, boxHeight);
-            GUI.Box(backgroundRect, "", borderStyle);
-
-            Rect borderRect = new Rect(notificationData.position.x, notificationData.position.y, 4, boxHeight);
-            GUI.color = notificationData.borderColor;
+            Rect borderRect = new Rect(notificationData.position.x, notificationData.position.y, barWidth, boxHeight);
+            GUI.color = Color.blue;
             GUI.Box(borderRect, "");
             GUI.color = Color.white;
+
+            Rect backgroundRect = new Rect(borderRect.x + barWidth, notificationData.position.y, boxWidth - barWidth, boxHeight); 
+            GUI.Box(backgroundRect, "", borderStyle);
 
             Rect headerRect = new Rect(backgroundRect.x + 10, backgroundRect.y + 5, backgroundRect.width - 20, 20);
             GUI.Label(headerRect, "Notification", headerStyle);
@@ -379,7 +379,7 @@ namespace Zeon.Notifications
 
         private void PlayNotificationSound() // u can change this sound if u want idrc
         {
-            StartCoroutine(DownloadAndPlaySound("https://github.com/odinong/BioFr/raw/refs/heads/main/Notification.mp3"));
+            StartCoroutine(DownloadAndPlaySound("https://github.com/odinong/BioFr/raw/refs/heads/main/buttonpress.ogg"));
         }
         
         private void PlayStartupSound() // u can change this sound if u want idrc

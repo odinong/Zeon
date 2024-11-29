@@ -18,13 +18,18 @@ using HarmonyLib;
 using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 using Zeon.Notifications;
 using GorillaGameModes;
+using PlayFab.ClientModels;
+using UnityEngine.XR;
+using UnityEngine.InputSystem;
 
 /* 
 Zeon
 Created by athena (@trix9x)
 Zeon falls under the GPL-3.0 license. Do not take credit for the work as it remains copyrighted under the terms of this license.
 
-Any comments here are completely for me, do not take my code without permission
+Any comments here are completely for me
+feel free to read them
+do not take my code without permission
 */
 namespace Zeon.Mods
 {
@@ -55,7 +60,7 @@ namespace Zeon.Mods
         public static float lastExecutionTime = 0f;
         public static float TryGetGuardiandelay = 0.2f;
 
-        public static void GetGuardian()
+        public static void GetGuardian() // dont use this it doesnt work 
         {
             if (Time.time < lastExecutionTime + TryGetGuardiandelay) return; 
 
@@ -99,7 +104,7 @@ namespace Zeon.Mods
                 ZeonMain.getGuardian = false;
             }
         }
-        public static void CrashAllAsGuardian()
+        public static void CrashAllAsGuardian() // dont use this it doesnt work
         {
             GorillaGuardianManager hgghffg = GameObject.Find("GT Systems/GameModeSystem/Gorilla Guardian Manager").GetComponent<GorillaGuardianManager>();
             if (hgghffg.IsPlayerGuardian(NetworkSystem.Instance.LocalPlayer))
@@ -139,88 +144,37 @@ namespace Zeon.Mods
         public static bool justdidthat = false;
         public static float lastExecutionTime2 = 0f;
         public static float lagAllDel = 0.2f;
-        public static void TestLagAll()
+        /*
+        public static void CrashTest2()
         {
-            string[] messages = new string[]
-            {
-                "trying to inappropriately create game managers",
-                "trying to create multiple game managers",
-                "possible kick attempt",
-                "room host force changed",
-                "inappropriate tag data being sent",
-                "taking master to ban player",
-                "gorvity bisdabled",
-                "wack rad.",
-                "empty rig",
-                "evading the name ban",
-                "extremely far tag",
-                "inappropriate tag data being sent multiple vrrigs",
-                "inappropriate tag data being sent creating multiple vrrigs",
-                "inappropriate tag data being sent init noob",
-                "inappropriate tag data being sent set tagged time",
-                "inappropriate tag data being sent set slowed time",
-                "inappropriate tag data being sent set join tagged time",
-                "inappropriate tag data being sent play tag sound",
-                "inappropriate tag data being sent bonk",
-                "inappropriate tag data being sent drum",
-                "inappropriate tag data being sent self only instrument",
-                "inappropriate tag data being sent hand tap",
-                "inappropriate tag data being sent update cosmetics",
-                "inappropriate tag data being sent update cosmetics with tryon",
-                "invalid projectile state",
-                "invalid impact state",
-                "too many rpc calls!",
-                "invalid world shareable",
-                "Sent an SetOwnershipFromMasterClient when they weren't the master client",
-                "projectile error",
-                "invalid tag",
-                "creating rigs as room objects",
-                "creating rigs for someone else",
-                "splash effect",
-                "geode effect"
-            };
-
-            string[] array = new string[GameObject.Find("Networking Scripts/GorillaReporter").GetComponent<GorillaNot>().cachedPlayerList.Length];
-            int num = 0;
-
-            foreach (NetPlayer netPlayer in GameObject.Find("Networking Scripts/GorillaReporter").GetComponent<GorillaNot>().cachedPlayerList)
-            {
-                array[num] = netPlayer.UserId;
-                num++;
-            }
-
             foreach (VRRig a in GorillaParent.instance.vrrigs)
             {
                 if (!a.isLocal)
                 {
-                    string randomMessage = messages[UnityEngine.Random.Range(0, messages.Length)];
-
-                    PhotonNetwork.RaiseEvent(
-                        8,
-                        new object[]
-                        {
-                    NetworkSystem.Instance.RoomStringStripped(),
-                    array,
-                    NetworkSystem.Instance.MasterClient.UserId,
-                    a.OwningNetPlayer.UserId,
-                    a.OwningNetPlayer.NickName,
-                    randomMessage,
-                    NetworkSystemConfig.AppVersion
-                        },
-                        new RaiseEventOptions { CachingOption = EventCaching.AddToRoomCache },
-                        new ExitGames.Client.Photon.SendOptions { Encrypt = false }
-
-                    );
-                    RaiseEventOptions raiseEventOptions = new RaiseEventOptions();
-                    WebFlags flags = new WebFlags(1);
-                    raiseEventOptions.Flags = flags;
-                    object[] eventContent = new object[0];
-                    PhotonNetwork.RaiseEvent(10, eventContent, new RaiseEventOptions { CachingOption = EventCaching.AddToRoomCache }, SendOptions.SendReliable);
-
-                    GameObject.Find("Networking Scripts/GorillaReporter").GetComponent<GorillaNot>().SendReport(randomMessage, a.OwningNetPlayer.UserId, a.OwningNetPlayer.NickName);
+                    PhotonNetwork.NetworkingClient.OpRaiseEvent(254, a.OwningNetPlayer.ActorNumber, null, SendOptions.SendReliable);
                 }
+
             }
         }
+        */
+        /*
+        public static void CrashTest3()
+        {
+            foreach (VRRig a in GorillaParent.instance.vrrigs)
+            {
+                if (!a.isLocal)
+                {
+                    Dictionary<byte, object> dictionary = new Dictionary<byte, object>();
+                    dictionary.Add(233, false);
+                    dictionary.Add(252, a.OwningNetPlayer.ActorNumber);
+                    PhotonNetwork.NetworkingClient.OpRaiseEvent(254, dictionary, null, SendOptions.SendReliable);
+                    PhotonNetwork.CurrentRoom.LoadBalancingClient.LoadBalancingPeer.SendOperation(254, dictionary, new SendOptions { Reliability = true, DeliveryMode = DeliveryMode.ReliableUnsequenced, Encrypt = true });
+                    PhotonNetwork.CurrentRoom.LoadBalancingClient.LoadBalancingPeer.SendOperation(212, dictionary, new SendOptions { Reliability = true, DeliveryMode = DeliveryMode.ReliableUnsequenced, Encrypt = true });
+                }
+
+            }
+        }
+        */
         public static void TestCrash()
         {
             if ((double)ControllerInputPoller.instance.rightControllerIndexFloat >= 0.1 || UnityInput.Current.GetKey(KeyCode.E))
@@ -342,7 +296,6 @@ namespace Zeon.Mods
             if ((double)ControllerInputPoller.instance.rightControllerIndexFloat >= 0.1 || UnityInput.Current.GetKey(KeyCode.E))
             {
                 NormalMods.lastShooterTime = Time.time;
-                CoroutineManager.RunCoroutine(ProcessTreePiece());
                 BuilderTable.instance.builderNetworking.PlayerEnterBuilder();
                 NormalMods.RPCProt();
             }
@@ -355,6 +308,148 @@ namespace Zeon.Mods
                 CoroutineManager.RunCoroutine(SpamRandomPiece());
                 NormalMods.RPCProt();
             }
+        }
+        /*
+        public static void SetMaster() // please never call this it was a test cat did
+        {
+            ExitGames.Client.Photon.Hashtable gameProperties = new ExitGames.Client.Photon.Hashtable
+            {
+                {
+                    248,
+                    PhotonNetwork.LocalPlayer.ActorNumber
+                }
+            };
+            ExitGames.Client.Photon.Hashtable expectedProperties = new ExitGames.Client.Photon.Hashtable
+            {
+                {
+                    248,
+                    PhotonNetwork.MasterClient.ActorNumber
+                }
+            };
+            Dictionary<byte, object> dictionary = new Dictionary<byte, object>();
+            dictionary.Add(251, gameProperties);
+            dictionary.Add(250, true);
+            if (expectedProperties != null && expectedProperties.Count != 0)
+            {
+                dictionary.Add(231, expectedProperties);
+            }
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.LoadBalancingPeer.SendOperation(252, dictionary, SendOptions.SendReliable);
+        }
+        */
+        private static GameObject pointer;
+        private static VRRig lockedVRRig; 
+        private static Camera desktopCamera;
+        private static GameObject triggerZones;
+
+        private static void GunLib(Action<VRRig> method, bool shouldLock) // half of this was chatgpt cause i dont know how to mask shit and stuff, this isnt used at all lol
+        {
+            if (desktopCamera == null)
+            {
+                desktopCamera = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera")?.GetComponent<Camera>();
+                if (desktopCamera == null)
+                {
+                    Debug.LogError("Shoulder Camera not found. Ensure it exists in the scene.");
+                    return;
+                }
+            }
+
+            if (triggerZones == null)
+            {
+                triggerZones = GameObject.Find("Environment Objects/TriggerZones_Prefab");
+                if (triggerZones == null)
+                {
+                    Debug.LogError("TriggerZones_Prefab not found. Ensure it exists in the scene.");
+                    return;
+                }
+            }
+
+            if (Mouse.current.rightButton.isPressed)
+            {
+                Ray ray = desktopCamera.ScreenPointToRay(UnityEngine.InputSystem.Mouse.current.position.ReadValue());
+                RaycastHit raycastHit;
+
+                if (Physics.Raycast(ray, out raycastHit))
+                {
+                    if (pointer == null)
+                    {
+                        pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        UnityEngine.Object.Destroy(pointer.GetComponent<Rigidbody>());
+                        UnityEngine.Object.Destroy(pointer.GetComponent<SphereCollider>());
+                        pointer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+                        SetTransparency(pointer, 0.25f);
+                    }
+
+                    pointer.transform.position = raycastHit.point;
+
+                    Transform current = raycastHit.collider.transform;
+                    bool isUnderTriggerZones = false;
+
+                    while (current != null)
+                    {
+                        if (current.gameObject == triggerZones)
+                        {
+                            isUnderTriggerZones = true;
+                            break;
+                        }
+                        current = current.parent;
+                    }
+
+                    if (!isUnderTriggerZones)
+                    {
+                        if (Mouse.current.leftButton.isPressed)
+                        {
+                            if (shouldLock)
+                            {
+                                VRRig vrrig = raycastHit.collider.GetComponentInParent<VRRig>();
+                                if (vrrig != null)
+                                {
+                                    lockedVRRig = vrrig;
+                                    pointer.GetComponent<Renderer>().material.color = Color.green;
+                                    method?.Invoke(vrrig);
+                                }
+                            }
+                            else
+                            {
+                                method?.Invoke(null);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                lockedVRRig = null;
+            }
+        }
+
+        private static void SetTransparency(GameObject obj, float transparency)
+        {
+            Renderer renderer = obj.GetComponent<Renderer>();
+            if (renderer == null) return;
+
+            Material material = renderer.material;
+            material.SetOverrideTag("RenderType", "Transparent");
+            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetInt("_ZWrite", 0);
+            material.DisableKeyword("_ALPHATEST_ON");
+            material.EnableKeyword("_ALPHABLEND_ON");
+            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.renderQueue = 3000;
+
+            Color color = material.color;
+            color.a = transparency;
+            material.color = color;
+        }
+
+
+        public static void GunTest()
+        {
+            GunLib(vrrig =>
+            {
+                Debug.Log("gun works i think");
+            }, false);
         }
         public static void BlockRandomRain()
         {
