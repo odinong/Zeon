@@ -212,3 +212,7 @@ C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\obj\Debug\net48\Zeon.sourcelink.json
 C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\obj\Debug\net48\Zeon.csproj.Up2Date
 C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\obj\Debug\net48\Zeon.dll
 C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\obj\Debug\net48\Zeon.pdb
+C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\bin\Debug\net48\LIV.LCK_GorillaTag.dll
+C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\bin\Debug\net48\LIV.LCK.dll
+C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\bin\Debug\net48\LIV.NativeAudioBridge.dll
+C:\Users\EndisAstro\Desktop\VS\FartUI\Zeon\bin\Debug\net48\NativeGallery.dll

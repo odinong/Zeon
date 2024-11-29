@@ -42,8 +42,9 @@ namespace Zeon.Mods
                 PhotonNetwork.OpRemoveCompleteCacheOfPlayer(plr.Creator.ActorNumber);
             }
         }
+        /*
         public static TappableGuardianIdol[] aaa = null;
-        public static TappableGuardianIdol[] allthinhgys()
+        public static TappableGuardianIdol[] allthinhgys() // apparently this is taken from iiDk without my knowledge, nag cat about it, not me.
         {
             if (Time.time > lasttine)
             {
@@ -56,11 +57,12 @@ namespace Zeon.Mods
             }
             return aaa;
         }
+        */
         public static float lasttine = 0f;
         public static float lastExecutionTime = 0f;
         public static float TryGetGuardiandelay = 0.2f;
-
-        public static void GetGuardian() // dont use this it doesnt work 
+        /*
+        public static void GetGuardian() // dont use this it doesnt work, also apparently its taken from iiDk without my knowledge, nag cat about it, not me.
         {
             if (Time.time < lastExecutionTime + TryGetGuardiandelay) return; 
 
@@ -104,7 +106,9 @@ namespace Zeon.Mods
                 ZeonMain.getGuardian = false;
             }
         }
-        public static void CrashAllAsGuardian() // dont use this it doesnt work
+        */
+        /*
+        public static void CrashAllAsGuardian() // dont use this it doesnt work, also apparently its taken from iiDk without my knowledge, nag cat about it, not me.
         {
             GorillaGuardianManager hgghffg = GameObject.Find("GT Systems/GameModeSystem/Gorilla Guardian Manager").GetComponent<GorillaGuardianManager>();
             if (hgghffg.IsPlayerGuardian(NetworkSystem.Instance.LocalPlayer))
@@ -132,6 +136,7 @@ namespace Zeon.Mods
                 }
             }
         }
+        */
         public static void BlockSpammer()
         {
             if ((double)ControllerInputPoller.instance.rightControllerIndexFloat >= 0.1 || UnityInput.Current.GetKey(KeyCode.E))
