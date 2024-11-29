@@ -92,7 +92,8 @@ namespace Zeon.Mods
             UnityEngine.Object.Destroy(gameObject2, Time.deltaTime);
         }
         public static int ProjCount;
-        public static void LaunchProjectile(Vector3 pos, Vector3 vel)
+        /*
+        public static void LaunchProjectile(Vector3 pos, Vector3 vel) // please never call this ever its an instant ban
         {
             var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(ag => ag.GetName().Name == "Assembly-CSharp");
             var clas = assembly?.GetType("RoomSystem");
@@ -102,8 +103,8 @@ namespace Zeon.Mods
             byte r = 255, g = 0, b = 0, a = 255;
             object aura = Enum.Parse(st, "SlingShot");
             meth.Invoke(null, new object[] { pos, vel, aura, (int)(ProjCount + 1), rc, r, g, b, a });
-            Debug.Log("NIGGGAAAAA");
         }
+        */
         public static void Disconnect()
         {
             PhotonNetwork.Disconnect(); // bruh
@@ -124,23 +125,25 @@ namespace Zeon.Mods
         {
             ZeonMain.antiReportCrashfr = false;
         }
-        public static void ProjSpam()
+        /*
+        public static void ProjSpam() // dont EVER call this
         {
             Vector3 vel = GorillaTagger.Instance.offlineVRRig.rightHandTransform.forward;
             LaunchProjectile(GorillaTagger.Instance.rightHandTransform.position, vel);
         }
-        public static (Vector3 position, Quaternion rotation, Vector3 up, Vector3 forward, Vector3 right) TrueLeftHand()
+        */
+        public static (Vector3 position, Quaternion rotation, Vector3 up, Vector3 forward, Vector3 right) TrueLeftHand() // ty iiDk for letting me use this even though i dont use it 
         {
             Quaternion rot = GorillaTagger.Instance.leftHandTransform.rotation * GorillaLocomotion.Player.Instance.leftHandRotOffset;
             return (GorillaTagger.Instance.leftHandTransform.position + GorillaTagger.Instance.leftHandTransform.rotation * GorillaLocomotion.Player.Instance.leftHandOffset, rot, rot * Vector3.up, rot * Vector3.forward, rot * Vector3.right);
         }
 
-        public static (Vector3 position, Quaternion rotation, Vector3 up, Vector3 forward, Vector3 right) TrueRightHand()
+        public static (Vector3 position, Quaternion rotation, Vector3 up, Vector3 forward, Vector3 right) TrueRightHand() // ty iiDk for letting me use this even though i dont use it 
         {
             Quaternion rot = GorillaTagger.Instance.rightHandTransform.rotation * GorillaLocomotion.Player.Instance.rightHandRotOffset;
             return (GorillaTagger.Instance.rightHandTransform.position + GorillaTagger.Instance.rightHandTransform.rotation * GorillaLocomotion.Player.Instance.rightHandOffset, rot, rot * Vector3.up, rot * Vector3.forward, rot * Vector3.right);
         }
-
+        /*
         public static void TagAll()
         {
             {
@@ -271,6 +274,7 @@ namespace Zeon.Mods
             }
             return infected;
         }
+
         public static void EnableVRRig()
         {
             GorillaTagger.Instance.offlineVRRig.enabled = true;
@@ -324,6 +328,7 @@ namespace Zeon.Mods
                 }
             }
         }
+        */
         public static void AntiModerator()
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
@@ -350,28 +355,29 @@ namespace Zeon.Mods
             RPCProt();
         }
 
-        public static List<BuilderPiece> archivepieces = null;
-        private static float lastRecievedTime = -1f;
+        public static List<BuilderPiece> pieces = null;
+        private static float timeThing = -1f;
 
-        public static BuilderPiece[] GetPieces()
+        public static BuilderPiece[] GetPieces() // this is my own code not iiDk's
         {
-            if (Time.time > lastRecievedTime)
+            if (Time.time > timeThing)
             {
-                archivepieces = new List<BuilderPiece>();
-                lastRecievedTime = Time.time + 5f;
+                pieces = new List<BuilderPiece>();
+                timeThing = Time.time + 5f;
             }
-            if (archivepieces.Count == 0)
+            if (pieces.Count == 0)
             {
-                foreach (BuilderPiece lol in UnityEngine.Object.FindObjectsOfType<BuilderPiece>())
+                foreach (BuilderPiece piece in UnityEngine.Object.FindObjectsOfType<BuilderPiece>())
                 {
-                    if (!lol.isBuiltIntoTable)
+                    if (!piece.isBuiltIntoTable)
                     {
-                        archivepieces.Add(lol);
+                        pieces.Add(piece);
                     }
                 }
             }
-            return archivepieces.ToArray();
+            return pieces.ToArray();
         }
+        /*
         public static void TestBlockDrop(object builderTableInstance, BuilderTable.BuilderCommand cmd)
         {
 
@@ -385,18 +391,10 @@ namespace Zeon.Mods
 
             traverse.Method("CreateLocalCommandId").GetValue();
         }
+        */
         public static float lastSpammerTime = 0f;
         public static float lastShooterTime = 0f;
         public static readonly float delay = 0f;
-        public static bool shotgunRapid = false;
-        public static void RapidFireShotgun()
-        {
-            shotgunRapid = true;
-        }
-        public static void RapidFireShotgunOff()
-        {
-            shotgunRapid = false;
-        }
         public static bool lastHit = false;
         private static bool ghostMonke = false;
         public static void BlockGun()
@@ -471,27 +469,27 @@ namespace Zeon.Mods
 
             return blocks;
         }
-        private static float lastReceivedTime = 0f;
-        private static List<BuilderPiece> archivepiecesfiltered = new List<BuilderPiece>() { };
+        private static float lastFilterTime = 0f;
+        private static List<BuilderPiece> filteredpiece = new List<BuilderPiece>() { };
         public static BuilderPiece[] GetPiecesFiltered()
         {
-            if (Time.time > lastReceivedTime)
+            if (Time.time > lastFilterTime)
             {
-                archivepiecesfiltered = null;
-                lastReceivedTime = Time.time + 5f;
+                filteredpiece = null;
+                lastFilterTime = Time.time + 5f;
             }
-            if (archivepiecesfiltered == null)
+            if (filteredpiece == null)
             {
-                archivepiecesfiltered = new List<BuilderPiece>() { };
+                filteredpiece = new List<BuilderPiece>() { };
                 foreach (BuilderPiece piece in GetPieces())
                 {
                     if (piece.pieceType > 0)
                     {
-                        archivepiecesfiltered.Add(piece);
+                        filteredpiece.Add(piece);
                     }
                 }
             }
-            return archivepieces.ToArray();
+            return pieces.ToArray();
         }
         public static void DisableGhostTog()
         {
@@ -547,7 +545,7 @@ namespace Zeon.Mods
         private static float CoolIt = 0.1f;
         private static float CoolItTimer;
 
-        public static void SpazHats()
+        public static void SpazHats() // should work, only spazzes owned items lol, i think it rpc reports u
         {
             try
             {
@@ -595,10 +593,10 @@ namespace Zeon.Mods
         private static int currentItemIndexBalloon = 0;
         public static void ClearCart()
         {
-            CosmeticsController.instance.currentCart.Clear();
+            CosmeticsController.instance.currentCart.Clear(); // add more to this
         }
         public static bool isRightHand = false;
-        public static void UnlockAllExpensiveItems()
+        public static void UnlockAllExpensiveItems() // this is the try on room spaz
         {
             if ((double)ControllerInputPoller.instance.rightControllerIndexFloat >= 0.1 || UnityInput.Current.GetKey(KeyCode.E))
             {
@@ -635,8 +633,8 @@ namespace Zeon.Mods
 
                                 GameObject.Find("Environment Objects/LocalObjects_Prefab/City_WorkingPrefab").SetActive(true);
                                 GameObject.Find("Environment Objects/LocalObjects_Prefab/City_WorkingPrefab/CosmeticsRoomAnchor/nicegorillastore_prefab/DressingRoom_Mirrors_Prefab/ShoppingCart/Anchor/FittingRoomButton")
-                                    .GetComponent<FittingRoomButton>().ButtonActivationWithHand(isRightHand);
-                                isRightHand = !isRightHand;
+                                    .GetComponent<FittingRoomButton>().ButtonActivationWithHand(isRightHand); // wont work without this
+                                isRightHand = !isRightHand; // swap hands (for holdables)
                                 currentItemIndex = i + 1;
                                 return;
                             }
@@ -645,7 +643,8 @@ namespace Zeon.Mods
                 }
             }
         }
-        public static void SpamPopBallons()
+        /*
+        public static void SpamPopBallons() // doesnt work
         {
             RPCProt();
             if (CosmeticsController.instance != null)
@@ -690,6 +689,7 @@ namespace Zeon.Mods
                 }
             }
         }
+        */
         public static bool isLefThandRR = false;
         private static void ClickButton(string path)
         {
@@ -706,8 +706,7 @@ namespace Zeon.Mods
         }
         public static void Invis()
         {
-            bool flag = ControllerInputPoller.instance.rightControllerIndexFloat > 0.4f;
-            if (flag)
+            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.4f)
             {
                 BallsOnHands();
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
@@ -757,7 +756,7 @@ namespace Zeon.Mods
                 }
             }
         }
-        public static void DisableTracers()
+        public static void DisableTracers() // this is really unoptimized but hey it works ig lol
         {
             foreach (GameObject a in Resources.FindObjectsOfTypeAll<GameObject>())
             {
@@ -767,7 +766,7 @@ namespace Zeon.Mods
                 }
             }
         }
-        public static void BoneESP()
+        public static void BoneESP() // taken from cat but hes a dev so it dont matter
         {
             Material material = new Material(Shader.Find("GUI/Text Shader"));
             material.color = Color.Lerp(Color.white, MainColor, Mathf.PingPong(Time.time, 1));
@@ -843,7 +842,7 @@ namespace Zeon.Mods
             }
         }
         public static int[] bones = { 4, 3, 5, 4, 19, 18, 20, 19, 3, 18, 21, 20, 22, 21, 25, 21, 29, 21, 31, 29, 27, 25, 24, 22, 6, 5, 7, 6, 10, 6, 14, 6, 16, 14, 12, 10, 9, 7 };
-        public static void BoneESPOff()
+        public static void BoneESPOff() // also taken from cat but again hes a dev
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {

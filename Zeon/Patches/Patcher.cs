@@ -11,7 +11,7 @@ Zeon falls under the GPL-3.0 license. Do not take credit for the work as it rema
 
 Any comments here are completely for me, do not take my code without permission
 */
-namespace Zeon.Patchers
+namespace Zeon.Patchers // the input patch isnt nessacary
 {
     #region Shader Patch
 

@@ -46,7 +46,7 @@ namespace Zeon.Mods
         public static TappableGuardianIdol[] aaa = null;
         public static TappableGuardianIdol[] allthinhgys() // apparently this is taken from iiDk without my knowledge, nag cat about it, not me.
         {
-            if (Time.time > lasttine)
+            if (Time.time > lasttine)   
             {
                 aaa = null;
                 lasttine = Time.time + 30f;

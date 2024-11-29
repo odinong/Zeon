@@ -17,7 +17,7 @@ Zeon falls under the GPL-3.0 license. Do not take credit for the work as it rema
 
 Any comments here are completely for me, do not take my code without permission
 */
-namespace Zeon.Patches
+namespace Zeon.Patches // numorous patches that i need for the menu
 {
     [HarmonyPatch(typeof(GorillaNot), "SendReport")]
     internal class AntiCheat : MonoBehaviour
@@ -26,18 +26,18 @@ namespace Zeon.Patches
         {
             if (susId == PhotonNetwork.LocalPlayer.UserId && Main.blockAcEvents == true)
             {
-                // Debug.Log("<color=red>GorillaNot</color> : <color=red>BLOCKED AC REPORT FROM BEING SENT TO YOU:</color><color=red>REASON: " + susReason + "</color>");
+                NotifiLib.SendNotification("<color=red>GorillaNot</color> : <color=red>BLOCKED AC REPORT FROM BEING SENT TO YOU:</color><color=red>REASON: " + susReason + "</color>");
                 Mods.NormalMods.RPCProt();
             }
             if (susId == PhotonNetwork.LocalPlayer.UserId)
             {
-                // Debug.Log("<color=red>GorillaNot</color> : <color=red>AC REPORT HAS BEEN SENT TO YOU:</color><color=red>REASON: " + susReason + "</color>");
+                NotifiLib.SendNotification("<color=red>GorillaNot</color> : <color=red>AC REPORT HAS BEEN SENT TO YOU:</color><color=red>REASON: " + susReason + "</color>");
                 Mods.NormalMods.RPCProt();
                 PhotonNetwork.Disconnect();
             }
             if (susId == PhotonNetwork.LocalPlayer.UserId == false)
             {
-                // Debug.Log("<color=red>GorillaNot</color> : <color=red>AC REPORT:</color> <color=red>USER: " + susId + "</color><color=red>NAME: " + susNick + ", </color><color=red>REASON: " + susReason + "</color>");
+                NotifiLib.SendNotification("<color=red>GorillaNot</color> : <color=red>AC REPORT:</color> <color=red>USER: " + susId + "</color><color=red>NAME: " + susNick + ", </color><color=red>REASON: " + susReason + "</color>");
             }
             return false;
         }
@@ -46,7 +46,7 @@ namespace Zeon.Patches
     [HarmonyPatch(typeof(LoadBalancingClient), "OnEvent")]
     class RaiseEventPatch
     {
-        static void Postfix(EventData __0)
+        static void Postfix(EventData __0) // event logger, if you get kicked from someone and there is a raiseevent called, please dm it to me cause i need it, you will be credited and MAYBE given a special role
         {
             if (__0.Code != 0 && __0.Code != 203 && __0.Code != 201 && __0.Code != 200)
             {
@@ -54,10 +54,14 @@ namespace Zeon.Patches
                 string senderName = sender != null ? sender.NickName : "Unknown";
                 var eventInfo = new StringBuilder();
                 eventInfo.AppendLine("[RaiseEvent] Details:");
+                eventInfo.AppendLine("IF YOU GOT KICKED FROM SOMEONE AND THIS RAISEEVENT WAS THE REASON, SEND IT TO ME ON DISCORD IMMEDIANTLY");
+                eventInfo.AppendLine("IF YOU GOT KICKED FROM SOMEONE AND THIS RAISEEVENT WAS THE REASON, SEND IT TO ME ON DISCORD IMMEDIANTLY");
+                eventInfo.AppendLine("IF YOU GOT KICKED FROM SOMEONE AND THIS RAISEEVENT WAS THE REASON, SEND IT TO ME ON DISCORD IMMEDIANTLY");
+                eventInfo.AppendLine("IF YOU GOT KICKED FROM SOMEONE AND THIS RAISEEVENT WAS THE REASON, SEND IT TO ME ON DISCORD IMMEDIANTLY");
+                eventInfo.AppendLine("IF YOU GOT KICKED FROM SOMEONE AND THIS RAISEEVENT WAS THE REASON, SEND IT TO ME ON DISCORD IMMEDIANTLY");
                 eventInfo.AppendLine($"Code: {__0.Code}");
-                eventInfo.AppendLine($"Sender: {senderName} ({__0.Sender})");
-                eventInfo.AppendLine($"SenderActor: {senderName} ({__0.Sender})");
-                eventInfo.AppendLine($"Custom Data: {FormatValue(__0.CustomData)}");
+                eventInfo.AppendLine($"Sender: {senderName} ActorNum: ({__0.Sender})");
+                eventInfo.AppendLine($"Data: {FormatValue(__0.CustomData)}");
                 eventInfo.AppendLine($"Parameters Count: {__0.Parameters?.Count ?? 0}");
 
                 if (__0.Parameters != null)
@@ -71,7 +75,7 @@ namespace Zeon.Patches
             }
         }
 
-        static string FormatValue(object value)
+        static string FormatValue(object value) // thanks chatgpt
         {
             if (value == null)
                 return "None";
@@ -136,10 +140,10 @@ namespace Zeon.Patches
     [HarmonyPatch(typeof(GorillaNot), "IncrementRPCCallLocal")]
     public class NoIncrementRPCCallLocal : MonoBehaviour
     {
-        private static bool Prefix(PhotonMessageInfoWrapped infoWrapped, string rpcFunction)
+        private static bool Prefix(PhotonMessageInfoWrapped infoWrapped, string rpcFunction) // commented out since it would spam console log
         {
             
-            Debug.Log(infoWrapped.Sender.NickName + " sent rpc: " + rpcFunction + " master: " + infoWrapped.Sender.IsMasterClient);
+            // Debug.Log(infoWrapped.Sender.NickName + " sent rpc: " + rpcFunction + " master: " + infoWrapped.Sender.IsMasterClient);
             return false;
         }
     }

@@ -86,7 +86,11 @@ namespace Zeon.Notifications
 
             notificationDataList.RemoveAll(n => (Time.time - n.spawnTime) > NotificationLifetime);
         }
-
+        public static void SendPlayerNotification(string playerName, string playerEvent, string roomCode)
+        {
+            string notificationMessage = $"Event For Player: {playerName}\n<size=12>Event: {playerEvent}\nRoom Code: {roomCode}</size>";
+            SendNotification(notificationMessage);
+        }
         private void DisplayNotification(NotificationData notificationData, int index)
         {
             float boxWidth = 300;
@@ -106,7 +110,7 @@ namespace Zeon.Notifications
             Rect headerRect = new Rect(backgroundRect.x + 10, backgroundRect.y + 5, backgroundRect.width - 20, 20);
             GUI.Label(headerRect, "Notification", headerStyle);
 
-            Rect textRect = new Rect(backgroundRect.x + 10, backgroundRect.y + 25, backgroundRect.width - 20, 30);
+            Rect textRect = new Rect(backgroundRect.x + 10, backgroundRect.y + 25, backgroundRect.width - 20, 50); 
             GUI.Label(textRect, notificationData.message, notificationStyle);
         }
 

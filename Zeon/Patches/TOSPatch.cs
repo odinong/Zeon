@@ -12,7 +12,7 @@ Zeon falls under the GPL-3.0 license. Do not take credit for the work as it rema
 
 Any comments here are completely for me, do not take my code without permission
 */
-namespace Zeon.Patches
+namespace Zeon.Patches // no this isnt iiDk's, i remade this
 {
     [HarmonyPatch(typeof(LegalAgreements), "PostUpdate")]
     public class TOSPatch

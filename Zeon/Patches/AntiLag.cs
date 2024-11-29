@@ -20,7 +20,7 @@ namespace Zeon.Patchers
 {
     public class AntiLag : MonoBehaviour
     {
-        private static bool Prefix(byte eventCode, object eventContent, RaiseEventOptions raiseEventOptions, SendOptions sendOptions)
+        private static bool Prefix(byte eventCode, object eventContent, RaiseEventOptions raiseEventOptions, SendOptions sendOptions) // this isnt antilag but im adding it anyways
         {
             Debug.Log(string.Format("Event code: {0}, Event Context: {1}, RaiseEvent options: {2}, Send Options: {3}", new object[]
             {

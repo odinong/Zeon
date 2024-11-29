@@ -37,9 +37,9 @@ namespace Zeon.Menu
         // Constant
         public static bool lastMasterClient = false;
         public static bool blockAcEvents = false;
-        public static Vector3 leftPageButton = new Vector3(0.5f, -0.004935512f, 0.3324285f);
+        public static Vector3 leftPageButton = new Vector3(0.6f, -0.004935512f, 0.3324285f);
         public static Vector3 leftPageButtonText = new Vector3(0.07707082f, 0, 0.1223036f);
-        public static Vector3 rightPageButton = new Vector3(0.5f, -0.0007184388f, 0.2374102f);
+        public static Vector3 rightPageButton = new Vector3(0.6f, -0.0007184388f, 0.2374102f);
         public static Vector3 rightPageButtonSize = new Vector3(0.03996109f, 0.9199839f, 0.07821f);
         public static Vector3 homeButtonSize = new Vector3(0.03996109f, 0.4474708f, 0.07821f);
         public static Vector3 rightPageButtonText = new Vector3(0.07707082f, 0, 0.0892088f);

@@ -18,7 +18,7 @@ Any comments here are completely for me, do not take my code without permission
 namespace Zeon.Patches
 {
     [HarmonyPatch(typeof(BuilderTableNetworking), "PieceCreatedRPC")]
-    public class CreatePatch
+    public class CreatePatch // thank you ii (he gave me this before he released dont call me a skid loser)
     {
         public static bool enabled = false;
         public static int pieceTypeSearch = 0;

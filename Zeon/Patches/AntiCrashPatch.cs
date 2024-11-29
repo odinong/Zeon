@@ -20,7 +20,7 @@ namespace Zeon.Patches
     [HarmonyPatch("DoLaunch")]
     public class DoLaunchPatch
     {
-        static bool Prefix(ref Vector3 velocity)
+        static bool Prefix(ref Vector3 velocity) // this is for shibas guardian crash all, i think it works but i havent tested it yet.
         {
             if (velocity.x > 50 || velocity.y > 50 || velocity.z > 50 ||
                 float.IsNaN(velocity.x) || float.IsNaN(velocity.y) ||

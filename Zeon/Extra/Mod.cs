@@ -71,7 +71,7 @@ namespace Zeon
         public static float moveSpeed = 1f;
         public static float rotationSpeed = 1.0f;
         public static float flySpeed = 10f;
-        public static void CreateRoom(string roomName, bool isPublic)
+        public static void CreateRoom(string roomName, bool isPublic) // ty iiDk for letting me use this even though i dont think it works anymore
         {
             PhotonNetworkController.Instance.currentJoinTrigger = GorillaComputer.instance.GetJoinTriggerForZone("forest");
             UnityEngine.Debug.Log((string)typeof(PhotonNetworkController).GetField("platformTag", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(PhotonNetworkController.Instance));
@@ -89,7 +89,7 @@ namespace Zeon
             };
             NetworkSystem.Instance.ConnectToRoom(roomName, roomConfig);
         }
-        public static string RandomRoomName()
+        public static string RandomRoomName() // ty iiDk for letting me use this even though i dont think it works anymore
         {
             string text = "";
             for (int i = 0; i < 4; i++)
@@ -102,7 +102,7 @@ namespace Zeon
             }
             return RandomRoomName();
         }
-        public static void CreatePublic()
+        public static void CreatePublic() // ty iiDk for letting me use this even though i dont think it works anymore
         {
             CreateRoom(RandomRoomName(), true);
         }

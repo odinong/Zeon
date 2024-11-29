@@ -22,7 +22,7 @@ namespace Zeon.Patches
         {
             if (newPlayer != oldnewplayer)
             {
-                NotifiLib.SendNotification("<color=grey></color><color=blue>JOIN</color><color=grey> : </color><color=white>Name: " + newPlayer.NickName + "</color>");
+                NotifiLib.SendPlayerNotification($"{newPlayer.NickName}", "JOINED", PhotonNetwork.CurrentRoom.Name);
                 oldnewplayer = newPlayer;
             }
         }

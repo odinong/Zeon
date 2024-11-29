@@ -181,14 +181,6 @@ namespace Zeon
             {
                 NormalMods.AntiReport();
             }
-            if (getGuardian)
-            {
-                OPMods.GetGuardian();
-            }
-            if (GCrasAll)
-            {
-                OPMods.CrashAllAsGuardian();
-            }
             if (boneesp == true && shouldDestroyBones == false)
             {
                 NormalMods.BoneESP();
@@ -202,10 +194,6 @@ namespace Zeon
             if (DestroyAllBlocksE)
             {
                 OPMods.DestroyBlocks();
-            }
-            if (gunTest)
-            {
-                OPMods.GunTest();
             }
         }
         public static bool shouldDestroyBones = false;
@@ -498,10 +486,6 @@ namespace Zeon
             {
                 spazhats = !spazhats;
             }
-            if (GUILayout.Button("Test Guns: " + gunTest, buttonStyle))
-            {
-                gunTest = !gunTest;
-            }
             GUILayout.EndScrollView();
         }
         
@@ -573,10 +557,6 @@ namespace Zeon
             if (GUILayout.Button("Remove Blocks [E]: " + DestroyAllBlocksE, buttonStyle))
             {
                 DestroyAllBlocksE = !DestroyAllBlocksE;
-            }
-            if (GUILayout.Button("Break Room: " + testLagAll, buttonStyle))
-            {
-                testLagAll = !testLagAll;
             }
             GUILayout.EndScrollView();
         }
