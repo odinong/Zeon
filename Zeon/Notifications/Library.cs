@@ -87,14 +87,14 @@ namespace Zeon.Notifications
             notificationDataList.RemoveAll(n => (Time.time - n.spawnTime) > NotificationLifetime);
         }
         public static void SendPlayerNotification(string playerName, string playerEvent, string roomCode)
-        {
+        { 
             string notificationMessage = $"Event For Player: {playerName}\n<size=12>Event: {playerEvent}\nRoom Code: {roomCode}</size>";
             SendNotification(notificationMessage);
         }
         private void DisplayNotification(NotificationData notificationData, int index)
         {
             float boxWidth = 300;
-            float boxHeight = 70;
+            float boxHeight = 90; 
             float barWidth = 2;
 
             notificationData.position.y = 10 + (index * (boxHeight + 10));
